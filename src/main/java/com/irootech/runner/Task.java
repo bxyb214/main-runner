@@ -1,4 +1,4 @@
-package com.oldratlee.runner;
+package com.irootech.runner;
 
 import java.io.*;
 import java.time.*;
@@ -14,19 +14,19 @@ public class Task {
     
     private final String HEART_BEAT = "heartbeat";
 
-    //    private final String PATH_PRE = "/data/";
-    private final String PATH_PRE = "/data/";
+        private final String PATH_PRE = "/Users/Yan/Workspace/irootech/";
+//    private final String PATH_PRE = "/data/";
 
     public static void main(String[] args) throws IOException {
 
-        Set<String> interfaces = new HashSet<>();
+        List<String> interfaces = new ArrayList<>();
         interfaces.add("device_management_service");
         interfaces.add("query_device_management_service");
         new Task().run("device_management", interfaces, "2016-09-01", "2018-04-23");
     }
 
 
-    public void run(String serviceName, Set<String> interfaces, String startDate, String endDate) throws IOException {
+    public void run(String serviceName, List<String> interfaces, String startDate, String endDate) throws IOException {
 
 
         String[] interfaceNameList = new String[interfaces.size() + 1];
@@ -80,7 +80,7 @@ public class Task {
         LocalDate startDate = LocalDate.parse(startDateStr, formatter);
         LocalDate endDate = LocalDate.parse(endDateStr, formatter);
         //任务开始日期跟结束日期的天数差
-        int days = Period.between(startDate, endDate).getDays();
+        long days = endDate.toEpochDay() - startDate.toEpochDay();
         boolean startlog = true;
         for (int i = 0; i < days; i++) {
             //当天开始的时间
@@ -115,17 +115,17 @@ public class Task {
             fw = new FileWriter(file, true);
             StringBuffer outputStr = new StringBuffer();
             if (startlog == true) {
-                outputStr.append(outStartServerlog(serverName, instant));
+//                outputStr.append(outStartServerlog(serverName, instant));
                 startlog = false;
             }
             while (instant.isBefore(startDate.plusDays(i + 1).atStartOfDay().atZone(ZONE).toInstant())) {
                 for (int k = 0; k < steps.length; k++) {
                     if (interfaceCurrent[k].isBefore(instant)) {
-                        outputStr.append(writeLog(serverName, interfaceNameList[k], instant));
+//                        outputStr.append(writeLog(serverName, interfaceNameList[k], instant));
                         instant = instant.plusMillis(67);
                         interfaceCurrent[k] = instant.plusMillis(currentSteps[k]);
                     }
-                    fw.append(outputStr);
+//                    fw.append(outputStr);
                     outputStr.setLength(0);
                 }
                 instant = instant.plusMillis(currentStep);

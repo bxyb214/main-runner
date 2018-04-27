@@ -47,22 +47,22 @@ mvn install -P Profile-AllInOne
 使用`target/all-in-all.dir/bin`目录下的`run.sh`脚本来运行，这个脚本的第一个参数是要运行的类，后面参数是Java的运行参数。
 
 ```bash
-./run.sh com.oldratlee.runner.Main arg1 arg2
+./run.sh Main arg1 arg2
 ```
 
 输出如下：
 
 ```bash
-$ ./run.sh com.oldratlee.runner.Main arg1 arg2
+$ ./run.sh Main arg1 arg2
 ===================================
 Start run command:
-D:\ProgFile\Java\jdk1.6.0_31/bin/java -cp E:\main-runner\target\all-in-one.dir\conf;E:\main-runner\target\all-in-one.dir\lib\hamcrest-core-1.3.jar;E:\main-runner\target\all-in-one.dir\lib\jakarta.commons.io-2.0.jar;E:\main-runner\target\all-in-one.dir\lib\jakarta.commons.lang-2.5.jar;E:\main-runner\target\all-in-one.dir\lib\junit-4.11.jar;E:\main-runner\target\all-in-one.dir\lib\log4j-1.2.17.jar;E:\main-runner\target\all-in-one.dir\lib\main.runner-0.0.1-SNAPSHOT.jar;E:\main-runner\target\all-in-one.dir\lib\slf4j-api-1.5.6.jar;E:\main-runner\target\all-in-one.dir\lib\slf4j-log4j12-1.5.6.jar; com.oldratlee.runner.Main arg1 arg2
+D:\ProgFile\Java\jdk1.6.0_31/bin/java -cp E:\main-runner\target\all-in-one.dir\conf;E:\main-runner\target\all-in-one.dir\lib\hamcrest-core-1.3.jar;E:\main-runner\target\all-in-one.dir\lib\jakarta.commons.io-2.0.jar;E:\main-runner\target\all-in-one.dir\lib\jakarta.commons.lang-2.5.jar;E:\main-runner\target\all-in-one.dir\lib\junit-4.11.jar;E:\main-runner\target\all-in-one.dir\lib\log4j-1.2.17.jar;E:\main-runner\target\all-in-one.dir\lib\main.runner-0.0.1-SNAPSHOT.jar;E:\main-runner\target\all-in-one.dir\lib\slf4j-api-1.5.6.jar;E:\main-runner\target\all-in-one.dir\lib\slf4j-log4j12-1.5.6.jar; Main arg1 arg2
 ===================================
-2013-05-29 16:19:15,164 INFO [com.oldratlee.runner.Main] [main] (Main.java:13) - Hello World!
-com.oldratlee.runner.Main run!
+2013-05-29 16:19:15,164 INFO [Main] [main] (Main.java:13) - Hello World!
+Main run!
 argument 0: arg1
 argument 1: arg2
-2013-05-29 16:19:15,167 INFO [com.oldratlee.runner.Main] [main] (Main.java:21) - Bye!
+2013-05-29 16:19:15,167 INFO [Main] [main] (Main.java:21) - Bye!
 ```
 
 如何在你的工程加上打包的功能

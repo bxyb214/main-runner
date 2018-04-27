@@ -53,74 +53,43 @@
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
+					<source>1.8</source>
+					<target>1.8</target>
 					<encoding>utf-8</encoding>
 				</configuration>
 			</plugin>
-
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<appendAssemblyId>false</appendAssemblyId>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+					<archive>
+						<manifest>
+							<mainClass>com.irootech.runner.Main</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
 				<executions>
 					<execution>
-						<id>assemble</id>
-						<goals>
-							<goal>single</goal>
-						</goals>
+						<id>make-assembly</id>
 						<phase>package</phase>
+						<goals>
+							<goal>assembly</goal>
+						</goals>
 					</execution>
 				</executions>
-				<configuration>
-					<finalName>all-in-one</finalName>
-					<appendAssemblyId>false</appendAssemblyId>
-					<attach>false</attach>
-				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>1.8</source>
+					<target>1.8</target>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
 
-	<profiles>
-		<profile>
-			<id>Profile-AllInOne</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<build>
-				<plugins>
-					<plugin>
-						<artifactId>maven-assembly-plugin</artifactId>
-						<configuration>
-							<descriptors>
-								<descriptor>${basedir}/dev.xml</descriptor>
-							</descriptors>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-		<profile>
-			<id>Profile-AllInOne-NoDir</id>
-			<build>
-				<plugins>
-					<plugin>
-						<artifactId>maven-assembly-plugin</artifactId>
-						<configuration>
-							<descriptors>
-								<descriptor>${basedir}/release.xml</descriptor>
-							</descriptors>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
 </project>
